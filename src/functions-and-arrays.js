@@ -1,43 +1,205 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
+function maxOfTwoNumbers(number1, number2) {
+  if (number1 > number2) {
+    return number1;
+  }
 
+  else if (number2 > number1) {
+    return number2;
+  }
 
+  else {
+    return number1 || number2;
+  }
+}
+
+console.log(maxOfTwoNumbers(6, 3));
 
 // Iteration #2: Find longest word
+
+// Step 1: Store longest word in a variable
+// Step 2: Loop through the array
+// Step 3: Create a condition where if the word in the array is longest than the word stored in the variable, make it the longest word stored
+// Step 4: Return longest word
+
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-function findLongestWord() {}
+function findLongestWord(wordArray) {
+  let longestWord = "";
+  if (wordArray.length === 0) {
+    return null;
+  }
 
+  for (let i = 0; i < wordArray.length; i++) {
+    if (wordArray[i].length > longestWord.length) {
+      longestWord = wordArray[i];
+    }
+  }
+  return longestWord;
+}
+
+console.log(findLongestWord(words)); // returns "crocodile"
 
 
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers() {}
+function sumNumbers(numberArray) {
+  sum1 = 0;
+  for (let i = 0; i < numberArray.length; i++) {
+      sum1 += numberArray[i];
+  }
+  return sum1;
+}
 
+console.log(sumNumbers(numbers));
 
+// Iteration #3.2 Bonus:
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
 
-// Iteration #3.1 Bonus:
-function sum() {}
+// Step 1: Store sum in a variable
+// Step 2: Create a new array to store integers (existing & converted)
+// Step 3: Loop through the mixed array and check for numbers using typeof operator (if there, add to new array using push method)
+// Step 4: Loop through mixed array and check for booleans, using typeof operator (if true, add 1 to new array using push method)
+// Step 5: Loop through mixed array and check for strings using typeof operator (if true, store length of the string in a variable and add it to new aray using push method)
 
+function sum(mixedArray) {
+
+  let sum2 = 0;
+
+  let newArray = [];
+
+  for (let i = 0; i < mixedArray.length; i++) {
+    if (typeof mixedArray[i] === "number") {
+      newArray.push(mixedArray[i]);
+    }
+    else if (typeof mixedArray[i] === "boolean") {
+      if (mixedArray[i] === true) {
+        newArray.push(1);
+      }
+      
+    }
+    else if (typeof mixedArray[i] === "string") {
+      let stringLength = mixedArray[i].length;
+      newArray.push(stringLength);
+    }
+    else if (typeof mixedArray[i] === "object" || "array") {
+      console.log("Objects & Arrays are unsupported data types");
+    }
+  }
+
+  for (let j = 0; j < newArray.length; j++) {
+    sum2 += newArray[j];
+  }
+
+  return sum2;
+}
+
+console.log(sum(mixedArr));
 
 
 // Iteration #4: Calculate the average
-// Level 1: Array of numbers
+// Level 1: Array of numbers (Iteration 4.1)
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(average) {
+  let sum3 = 0;
+  if (average.length === 0) {
+    return null;
+  }
+  else if (average.length === 1) {
+    return average[0];
+  }
+  for (i = 0; i < average.length; i ++) {
+    sum3 += average[i];
+  }
+  return sum3/average.length;
+}
+
+console.log(averageNumbers(numbersAvg));
 
 
-// Level 2: Array of strings
+// Level 2: Array of strings (Iteration 4.2)
+
+// Step 1: Create a variable to store total number of characters in all strings
+// Step 2: Create a new array to store the converted strings as numbers
+// Step 3: Loop through the array of words, and add their length to the new array using the .length and .push method
+// Step 4: Calculate average of the new array of numbers
+
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
 
-// Bonus - Iteration #4.1
-function avg() {}
+
+let sum4 = 0;
+
+let stringsToNumbersArray = [];
+
+function averageWordLength(averageStrings) { 
+
+  if (averageStrings.length === 0) {
+    return null;
+  }
+
+  else if (averageStrings.length === 1) {
+    return averageStrings[0].length;
+    }
+
+  for (let i = 0; i < averageStrings.length; i++) {
+ 
+    stringsToNumbersArray.push(averageStrings[i].length);
+  }
+
+  for (j = 0; j < stringsToNumbersArray.length; j ++) {
+    sum4 += stringsToNumbersArray[j];
+  }
+  return sum4/stringsToNumbersArray.length;
+
+}
+
+console.log(averageWordLength(wordsArr));
+
+
+// Bonus - Iteration #4.3
+// Same logic as bonus iteration 3.2, then taking the average
+
+function avg(arr) {
+
+  let sum5 = 0;
+
+  let newArray2 = [];
+
+  if (arr.length === 0) {
+    return null;
+  }
+
+  for (let i = 0; i < mixedArray.length; i++) {
+    if (typeof mixedArray[i] === "number") {
+      newArray2.push(mixedArray[i]);
+    }
+    else if (typeof mixedArray[i] === "boolean") {
+      if (mixedArray[i] === true) {
+        newArray2.push(1);
+      }
+    
+    }
+    else if (typeof mixedArray[i] === "string") {
+      let stringLength = mixedArray[i].length;
+      newArray2.push(stringLength);
+    }
+  }
+
+  for (let j = 0; j < newArray2.length; j++) {
+    sum5 += newArray2[j];
+  }
+
+  return sum5/mewArray2.length;
+}
+
+console.log(sum(mixedArr));
+
 
 // Iteration #5: Unique arrays
+
 const wordsUnique = [
   'crab',
   'poison',
@@ -52,8 +214,21 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
 
+function uniquifyArray(arrayOfWords) {
+  const noRepeatWords = [];
+  if (arrayOfWords.length === 0) {
+    return null;
+  }
+  for (let i = 0; i < arrayOfWords.length; i++) {
+    if (noRepeatWords.indexOf(arrayOfWords[i]) === -1) {
+      noRepeatWords.push(arrayOfWords[i]);
+    }
+  }
+  return noRepeatWords;
+}
+
+console.log(uniquifyArray(wordsUnique));
 
 
 // Iteration #6: Find elements
